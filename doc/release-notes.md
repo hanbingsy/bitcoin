@@ -3,7 +3,7 @@ release-notes at release time)
 
 Bitcoin Core version *version* is now available from:
 
-  <https://bitcoin.org/bin/bitcoin-core-*version*/>
+  <https://bitcoincore.org/bin/bitcoin-core-*version*/>
 
 This is a new major version release, including new features, various bugfixes
 and performance improvements, as well as updated translations.
@@ -20,7 +20,7 @@ How to Upgrade
 ==============
 
 If you are running an older version, shut it down. Wait until it has completely
-shut down (which might take a few minutes for older versions), then run the 
+shut down (which might take a few minutes for older versions), then run the
 installer (on Windows) or just copy over `/Applications/Bitcoin-Qt` (on Mac)
 or `bitcoind`/`bitcoin-qt` (on Linux).
 
@@ -47,44 +47,34 @@ processing the entire blockchain.
 Compatibility
 ==============
 
-Bitcoin Core is extensively tested on multiple operating systems using
-the Linux kernel, macOS 10.8+, and Windows Vista and later. Windows XP is not supported.
+Bitcoin Core is supported and extensively tested on operating systems using
+the Linux kernel, macOS 10.10+, and Windows 7 and newer.  It is not recommended
+to use Bitcoin Core on unsupported systems.
 
 Bitcoin Core should also work on most other Unix-like systems but is not
 frequently tested on them.
 
+From 0.17.0 onwards, macOS <10.10 is no longer supported.  0.17.0 is
+built using Qt 5.9.x, which doesn't support versions of macOS older than
+10.10.  Additionally, Bitcoin Core does not yet change appearance when
+macOS "dark mode" is activated.
+
+In addition to previously-supported CPU platforms, this release's
+pre-compiled distribution also provides binaries for the RISC-V
+platform.
+
 Notable changes
 ===============
 
-Miner block size limiting deprecated
-------------------------------------
+Example item
+------------
 
-Though blockmaxweight has been preferred for limiting the size of blocks returned by
-getblocktemplate since 0.13.0, blockmaxsize remained as an option for those who wished
-to limit their block size directly. Using this option resulted in a few UI issues as
-well as non-optimal fee selection and ever-so-slightly worse performance, and has thus
-now been deprecated. Further, the blockmaxsize option is now used only to calculate an
-implied blockmaxweight, instead of limiting block size directly. Any miners who wish
-to limit their blocks by size, instead of by weight, will have to do so manually by
-removing transactions from their block template directly.
 
-HD-wallets by default
----------------------
-Due to a backward-incompatible change in the wallet database, wallets created
-with version 0.16.0 will be rejected by previous versions. Also, version 0.16.0
-will only create hierarchical deterministic (HD) wallets.
+Low-level changes
+=================
 
-Low-level RPC changes
-----------------------
-- The "currentblocksize" value in getmininginfo has been removed.
-- The deprecated RPC `getinfo` was removed. It is recommended that the more specific RPCs are used:
-  * `getblockchaininfo`
-  * `getnetworkinfo`
-  * `getwalletinfo`
-  * `getmininginfo`
-
-- `dumpwallet` no longer allows overwriting files. This is a security measure
-  as well as prevents dangerous user mistakes.
+Example item
+------------
 
 Credits
 =======
@@ -92,4 +82,4 @@ Credits
 Thanks to everyone who directly contributed to this release:
 
 
-As well as everyone that helped translating on [Transifex](https://www.transifex.com/projects/p/bitcoin/).
+As well as everyone that helped translating on [Transifex](https://www.transifex.com/bitcoin/bitcoin/).
